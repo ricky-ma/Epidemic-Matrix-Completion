@@ -2,10 +2,10 @@ import numpy as np
 from numpy.linalg import svd
 
 
-def matrix_completion(M):
-    A = M
+def complete(M):
+    A = np.matrix.astype(M, dtype='float')
     m, n = A.shape
-    O = np.ones(m,n)
+    O = np.ones((m, n))
 
     for i in range(m):
         for j in range(n):
@@ -14,6 +14,7 @@ def matrix_completion(M):
                 A[i][j] = 0
     for step_size in range(15):
         A = helper(A, O, step_size)
+    return A
 
 
 def helper(M, O, step_size):
@@ -27,9 +28,10 @@ def helper(M, O, step_size):
         nuc_norm = np.sum(np.diag(S))
         previous = A
         min_sigma = 0
-        i = np.min(S.shape)
+        i = np.min(S.shape) - 1
 
         while i > 0:
+            #TODO: what's going on here?
             S[i][i] = np.round(S[i][i], step_size)
             if S[i][i] > 0:
                 min_sigma = S[i][i]
