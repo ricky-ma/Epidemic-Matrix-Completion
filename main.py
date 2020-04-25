@@ -2,6 +2,7 @@ import pandas as pd
 import math
 import matrix_completion
 
+
 def load_covid_data(file):
     df = pd.read_csv(file, header=0)
     df.drop(columns=['Lat', 'Long', 'Province/State'], inplace=True)
@@ -64,9 +65,11 @@ def load_all_data():
 
 if __name__ == '__main__':
 
+    # load data from JHU covid csvs and world bank - world development indicators
     covid_confirmed, covid_deaths, comm_diseases, noncomm_diseases, safe_water, physicians, sanitation, \
         smoking, hygiene, life_expect, pop_65up, pop_1564 = load_all_data()
 
+    # create main matrix, add covid and indicator data
     M = pd.DataFrame()
     M['Country/Region'] = covid_confirmed['Country/Region']
     M['30 days from first case'] = covid_confirmed['30 days from first']
@@ -74,10 +77,11 @@ if __name__ == '__main__':
     for ind_data in [comm_diseases, noncomm_diseases, safe_water, physicians, sanitation, \
         smoking, hygiene, life_expect, pop_65up, pop_1564]:
         M[ind_data['Indicator Code'][0]] = ind_data['indicator']
-    # print(M)
 
+    # drop countries so that M is numerical
     countries = M['Country/Region']
     M.drop(columns=['Country/Region'], inplace=True)
 
+    # run matrix completion
     M_complete = matrix_completion.complete(M.to_numpy())
     # print(M_complete)
