@@ -74,6 +74,8 @@ if __name__ == '__main__':
     M['Country/Region'] = covid_confirmed['Country/Region']
     M['30 days from first case'] = covid_confirmed['30 days from first']
     M['30 days from first death'] = covid_deaths['30 days from first']
+    M['50 days from first case'] = covid_confirmed['50 days from first']
+    M['50 days from first death'] = covid_deaths['50 days from first']
     for ind_data in [comm_diseases, noncomm_diseases, safe_water, physicians, sanitation, \
         smoking, hygiene, life_expect, pop_65up, pop_1564]:
         M[ind_data['Indicator Code'][0]] = ind_data['indicator']
@@ -84,4 +86,4 @@ if __name__ == '__main__':
 
     # run matrix completion
     M_complete = matrix_completion.complete(M.to_numpy())
-    # print(M_complete)
+    print(M_complete)
