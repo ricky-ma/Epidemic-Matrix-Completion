@@ -32,7 +32,7 @@ def load_covid_data(file):
                 if days_since_first == 50:
                     df.at[index, '50 days from first'] = n
 
-    return df
+    return df.reset_index(drop=True)
 
 
 def load_indicator_data(file):
@@ -63,6 +63,13 @@ def load_all_data():
         smoking, hygiene, life_expect, pop_65up, pop_1564
 
 
+def save(M, M_complete):
+    new_cols = {x: y for x, y in zip(M_complete.columns, M.columns)}
+    M_complete.rename(columns=new_cols)
+    out.to_csv('output/M_original.csv', index=False)
+    out.to_csv('output/M_complete.csv', index=False)
+
+
 if __name__ == '__main__':
 
     # load data from JHU covid csvs and world bank - world development indicators
@@ -74,16 +81,22 @@ if __name__ == '__main__':
     M['Country/Region'] = covid_confirmed['Country/Region']
     M['30 days from first case'] = covid_confirmed['30 days from first']
     M['30 days from first death'] = covid_deaths['30 days from first']
-    M['50 days from first case'] = covid_confirmed['50 days from first']
-    M['50 days from first death'] = covid_deaths['50 days from first']
-    for ind_data in [comm_diseases, noncomm_diseases, safe_water, physicians, sanitation, \
-        smoking, hygiene, life_expect, pop_65up, pop_1564]:
+    for ind_data in [comm_diseases, noncomm_diseases, safe_water, physicians, sanitation, smoking, hygiene, life_expect,
+                     pop_65up, pop_1564]:
         M[ind_data['Indicator Code'][0]] = ind_data['indicator']
+
 
     # drop countries so that M is numerical
     countries = M['Country/Region']
     M.drop(columns=['Country/Region'], inplace=True)
 
     # run matrix completion
-    M_complete = matrix_completion.complete(M.to_numpy())
-    print(M_complete)
+    M_complete_np = matrix_completion.complete(M.to_numpy())
+
+    # convert M_complete back to dataframe
+    M_complete_df = pd.DataFrame(data=M_complete_np)
+
+    # add countries back to M, M_complete
+    M.insert(0, 'Country/Region', countries)
+    M_complete_df.insert(0, 'Country/Region', countries)
+    save(M, M_complete_df)
