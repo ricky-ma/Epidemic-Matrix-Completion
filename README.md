@@ -31,7 +31,7 @@ the number of confirmed cases and deaths in each country/region. The data for
 each country was normalized by calculating the total number of cases and deaths
 starting from the respective country's first case and death. This was 
 calculated for each country, 20, 30, 40, and 50 days from its first case and 
-death. <br/>
+death. <br/><br/>
 Indicators that may affect a country's case numbers and mortality rates are 
 provided by the World Bank's World Development Indicators. Ten relevant 
 indicators were selected from three categories. Health indicators include the 
@@ -40,9 +40,10 @@ death from communicable diseases, and death from noncommunicable diseases.
 Water and sanitation indicators include access to drinking water, access to 
 sanitation services, and access to basic handwashing facilities. Age and 
 population indicators include the percentage of people aged 15-64 and the 
-percentage of people aged 65 and up. <br/>
-The indicator and Covid-19 data are combined into one matrix with various
-missing values. This matrix is filled in using low-rank SVD, optimized with
+percentage of people aged 65 and up. The indicator and Covid-19 data are 
+combined into one matrix with various missing values. <br/>
+### Matrix Completion
+The combined matrix is filled in using low-rank SVD, optimized with
 fast alternating least-squares.
 
 
