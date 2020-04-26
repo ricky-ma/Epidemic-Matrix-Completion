@@ -1,6 +1,13 @@
 import numpy as np
 from numpy.linalg import svd
 
+#helper function to diagoalize a vector to a m by n matrix with 0 entries
+def diagonalize(singular_values,m,n):
+    S = np.zeros((m,n))
+    for i in range(len(singular_values)):
+        S[i][i] = singular_values[i]
+    return S
+
 
 def complete(M):
     A = np.matrix.astype(M, dtype='float')
@@ -19,13 +26,17 @@ def complete(M):
 
 def helper(M, O, step_size):
     A = M
+    print("M dimension ",M.shape)
     previous = A
     m, n = A.shape
     nuc_norm = 1e100
     U, S, V = svd(A)
+    S = diagonalize(S, m, n)
 
-    while np.sum(np.diag(S)) < nuc_norm:
-        nuc_norm = np.sum(np.diag(S))
+    #while np.sum(np.diag(S)) < nuc_norm:
+    while np.sum(S) < nuc_norm:
+        #nuc_norm = np.sum(np.diag(S))
+        nuc_norm = np.sum(S)
         previous = A
         min_sigma = 0
         i = np.min(S.shape) - 1
