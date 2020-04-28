@@ -68,22 +68,9 @@ highly collinear features.
 
 
 ## Experiments
-To test whether the algorithm works, we used two different datasets as stated in 
-Section 3.1. Both data have number of features less than or equal to 10, implying that 
-the matrix form of both data are sufficiently low-ranked for the algorithm to work. We 
-specifically decided to test matrix of different dimensions because we first wanted to 
-experiment with matrix of rank sufficiently less than 10, and matrix of rank at 10 (which 
-is at the maximum threshold).
+To test whether the algorithm works, we used two different datasets, as stated in Section 3.1. Both datasets have a number of features less than or equal to 10, such that the matrix forms of both data are sufficiently low-ranked for the algorithm to work. We decided to test matrices of different dimensions to experiment with matrices of rank less than 10, and matrices of rank at 10 (which is at the maximum threshold).
 
-Also, we chose two different types of data: time-series and non time-series. The Covid-19 
-cases and deaths matrix is a time-series data with increasing values while Covid-19 health 
-indicator is a non time-series categorical data. Although we do not have a test set for our 
-experiment, our approach to validating whether the model works is naive yet simple; we 
-would check whether there are values that seem to ``make sense''. For example, if there 
-were predictions on the number of cases or deaths such that the tolls were decreasing or 
-the value is negative, we would deem the model to be sub-optimal. Likewise, if predictions 
-were made on specific health-indicators, then we would deem the model to be viable if the 
-entries falls within the range of existing values of their respectable feature.
+We also chose two different types of data: time-series and non time-series. The Covid-19 cases and deaths matrix is a time-series data with increasing values while the public health indicators are non time-series, categorical data. Although we do not have a test set for our experiment, our approach to validating whether the model works is naive, yet simple; we would check whether there are values that seem to ``make sense''. For example, if there were predictions on the number of cases or deaths such that the tolls were decreasing or the value is negative, we would deem the model to be sub-optimal. Likewise, if predictions were made on specific health-indicators, then we would deem the model to be viable if the entries fall within the range of existing values of their respectable feature.
 
 ## Results
 Please find the linked CSV files for matrices of incomplete and completed datasets.
@@ -97,16 +84,21 @@ Please find the linked CSV files for matrices of incomplete and completed datase
 [Completed matrix of public health indicators with predictions](https://github.com/ricky-ma/Epidemic-Matrix-Completion/blob/master/output/ind_complete.csv)
 
 ## Conclusion
-Although some predicted data entries are flawed from our result (such as decreasing 
-number of cases and death tolls and negative values for death tolls), our model was able 
-to fill in values for missing data entries. The flawed data prediction could be a result 
-from the difference in the nature of data we were handling with compared to the Netflix 
-problem. For example, the matrix of Covid-19 cases and death count is a time series data 
-while the Netflix challenge is not. Hence, the variance in type of data that we were 
-working with may have diverged the result and performance of our model.
+Although some predicted data entries from our results are flawed (such as a decreasing number 
+of cases and death tolls and negative values for death tolls), our model was able to fill in 
+values for missing data entries. The flawed data prediction could be a result from the difference 
+in the nature of data we were handling with compared to the Netflix problem. For example, the 
+matrix of Covid-19 cases and death count is a time series data while the Netflix challenge is not. 
+Hence, the variance in type of data that we were working with may have diverged the result and 
+performance of our model. 
 
-Nevertheless, there were no values that were predicted that lied outside of the range of 
-existing values in the incomplete public health indicators matrix. This shows promising 
-sign for the algorithm. For further exploration of this model, it should be tested on 
-different types of data (panel data, time-series etc.) to reason why or why not it could 
-be a viable solution for predicting missing data entries. 
+The problematic predictions may also result from input rows that are too sparse, with some only 
+have 1 or 2 original entries. Looking at the original data, the last 10 input rows are all very 
+sparse. This may have caused inaccurate predictions for those rows, as well as negatively 
+affecting/skewing predictions for other countries. 
+
+Nevertheless, there were no values that were predicted that lied outside of the range of existing 
+values in the incomplete public health indicators matrix. This shows a  promising sign for the 
+algorithm. For further exploration of this model, it should be tested on different types of data 
+(panel data, time-series etc.) with denser matrices (sparse rows removed) to reason whether it 
+could be a viable solution for predicting missing public health and epidemic data entries. 
