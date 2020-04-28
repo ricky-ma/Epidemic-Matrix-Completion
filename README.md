@@ -275,8 +275,9 @@ entries falls within the range of existing values of their respectable feature.
 |Sao Tome and Principe           |                             |                             |                             |                               |                               |                               |
 |Yemen                           |                             |                             |                             |                               |                               |                               |
 
+
 ###Completed matrix of Covid-19 cases and deaths with predictions
-|Country/Region                  |0      |1      |2      |3      |4      |5      |
+|Country/Region                  |Cases 30 days from first case|Cases 40 days from first case|Cases 50 days from first case|Deaths 30 days from first death|Deaths 40 days from first death|Deaths 50 days from first death|
 |--------------------------------|-------|-------|-------|-------|-------|-------|
 |Afghanistan                     |84.0   |299.0  |714.0  |36.0   |86.14  |94.05  |
 |Albania                         |400.0  |548.0  |449.11 |23.0   |26.0   |18.04  |
@@ -463,6 +464,7 @@ entries falls within the range of existing values of their respectable feature.
 |Western Sahara                  |-12.04 |17.78  |23.55  |-18.49 |17.1   |10.31  |
 |Sao Tome and Principe           |-17.99 |18.61  |24.28  |0.3    |12.26  |8.13   |
 |Yemen                           |-20.26 |17.09  |22.95  |-0.54  |10.62  |6.56   |
+
 
 ###Incomplete matrix of public health indicators
 |SH.DTH.COMM.ZS                  |SH.DYN.NCOM.ZS|SH.H2O.SMDW.ZS|SH.MED.PHYS.ZS|SH.STA.SMSS.ZS|SH.PRV.SMOK|SH.STA.HYGN.ZS|SP.DYN.LE00.IN|SP.POP.65UP.TO.ZS|SP.POP.1564.TO.ZS|
@@ -653,8 +655,9 @@ entries falls within the range of existing values of their respectable feature.
 |15.6                            |13.0          |              |1.57          |              |6.1        |              |78.33         |8.1              |64.83            |
 |20.3                            |12.6          |50.35         |1.27          |42.76         |4.8        |              |76.52         |8.09             |66.12            |
 
+
 ###Completed matrix of public health indicators with predictions
-|6                               |7      |8      |9      |10     |11     |12     |13   |14   |15   |
+|SH.DTH.COMM.ZS                  |SH.DYN.NCOM.ZS|SH.H2O.SMDW.ZS|SH.MED.PHYS.ZS|SH.STA.SMSS.ZS|SH.PRV.SMOK|SH.STA.HYGN.ZS|SP.DYN.LE00.IN|SP.POP.65UP.TO.ZS|SP.POP.1564.TO.ZS|
 |--------------------------------|-------|-------|-------|-------|-------|-------|-----|-----|-----|
 |21.19                           |18.56  |60.39  |1.12   |47.86  |20.05  |45.42  |76.15|13.55|68.65|
 |36.4                            |29.8   |37.53  |0.28   |30.64  |17.65  |37.75  |64.49|2.58 |54.32|
