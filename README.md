@@ -86,15 +86,15 @@ were made on specific health-indicators, then we would deem the model to be viab
 entries falls within the range of existing values of their respectable feature.
 
 ## Results
-Please find attached CSV files for matrices of incomplete and completed datasets.
+Please find the linked CSV files for matrices of incomplete and completed datasets.
 
-Incomplete matrix of Covid-19 cases and deaths: `covid_original.csv`
+[Incomplete matrix of Covid-19 cases and deaths](https://github.com/ricky-ma/Epidemic-Matrix-Completion/blob/master/output/covid_original.csv)
 
-Completed matrix of Covid-19 cases and deaths with predictions: `covid_complete.csv`
+[Completed matrix of Covid-19 cases and deaths with predictions](https://github.com/ricky-ma/Epidemic-Matrix-Completion/blob/master/output/covid_complete.csv)
 
-Incomplete matrix of public health indicators: `ind_original.csv`
+[Incomplete matrix of public health indicators](https://github.com/ricky-ma/Epidemic-Matrix-Completion/blob/master/output/ind_original.csv)
 
-Completed matrix of public health indicators with predictions: `ind_complete.csv`
+[Completed matrix of public health indicators with predictions](https://github.com/ricky-ma/Epidemic-Matrix-Completion/blob/master/output/ind_complete.csv)
 
 ## Conclusion
 Although some predicted data entries are flawed from our result (such as decreasing 
